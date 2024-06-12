@@ -1,6 +1,8 @@
 import { useState, useId, useEffect } from 'react'
 import './App.css'
 import axios from 'axios';
+import displayTable from './ProjectsTable';
+import CreateProjectComponent from './InputComponent';
 
 interface ConstructionProject {
   projectName: string
@@ -44,20 +46,33 @@ function App() {
       .then((e) => e.data)
       .then((e) => console.log(e));
     } catch (err) {
-      // Handle the error 
+      // Handle the error
       console.log("Console error from react program! Check the response");
     } 
   };
+
 
   //accept name and display
 
   return (
     <>
       <h1>Construction Project Details</h1>
-      <label>Project Name: </label>
-      <input type='text' name='ProjectName' value={project?.projectName} onChange={handleNameChange}></input>
-      <button onClick={() => saveProject()}>Submit</button>
-      <p>{project?.projectName}</p>
+      <p>{CreateProjectComponent({
+        endDate: undefined,
+        projectName: undefined,
+        decsription: undefined,
+        startDate: undefined
+      })}</p>
+      <p>{displayTable([{projectName: "1"},{projectName: "1"},{projectName: "1"},{projectName: "1"}])}
+      </p>
+      <div className="top-right-container">
+        <button className="top-right-button">
+          Login
+        </button>
+        <button className="top-right-button" onClick={() => alert("For new users please contact administrator; email: riyarege16@gmail.com")}>
+          Signin
+        </button>
+      </div>
     </>
   )
   // <form>
