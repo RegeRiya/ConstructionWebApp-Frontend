@@ -1,9 +1,5 @@
-
-'./App.css'
-
-
 const displayTable = (rows: any[]) =>
-(
+{ return(
     <div className="container">
         <table>
             <thead>
@@ -15,18 +11,21 @@ const displayTable = (rows: any[]) =>
                 </tr>
             </thead>
             <tbody>
-                {rows.map((row, i) => {
+                { 
+                rows.map((row, i) => {
+                    //add different field names (discard quotes)
                     return (
                         <tr key={i}>
-                            <td>{row.ProjectName}</td>
-                            <td>{row.ProjectName}</td>
-                            <td>{row.ProjectName}</td>
-                            <td>{row.ProjectName}</td>
+                            <td>{row.projectName}</td>
+                            <td>{row.description}</td>
+                            <td>{row.startDate}</td>
+                            <td>{row.endDate}</td>
                         </tr>
                     );
                 })}
             </tbody>
         </table>
     </div>
-);
+)
+};
 export default displayTable;
