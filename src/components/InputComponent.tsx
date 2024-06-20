@@ -9,17 +9,14 @@ const InputComponent= () => {
 
     function addNewProject(): void {
         //save the new project fields to database
-        const payloadData = {projectName: "1", decsription: "2", startDate: "3", endDate: "4", projectId: "13"};
-        let formData = new FormData();
-        formData.append('projectName','1');
-        formData.append('decsription','2');
-        formData.append('startDate','3');
-        formData.append('endDate','4');
-        const payload = {
-            method: 'post', 
-            body: formData
+        const payloadData = {
+            projectName: projectName, decsription: decsription, startDate: startDate, endDate: endDate
         };
-        fetch('http://localhost:5079/api/ConstructionProject', payload)
+        const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            };
+        axios.post('http://localhost:5079/api/ConstructionProject', payloadData, headers)
         .then(() => alert("saved"));
     }
 
